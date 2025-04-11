@@ -1,6 +1,5 @@
-use std::{collections::HashMap, net::TcpListener};
+use std::net::TcpListener;
 
-use actix_web::web::Form;
 use reqwest::StatusCode;
 use zero2prod::FormData;
 
@@ -38,7 +37,7 @@ async fn subscribe_return_200_for_a_valid_form_data() {
     };
 
     let response = client
-        .post(&format!("{}/subscriptions", &app))
+        .post(format!("{}/subscriptions", app))
         .header("Content-Type", "application/x-www-form-urlencoded")
         .form(&body)
         .send()
@@ -62,7 +61,7 @@ async fn subscribe_return_400_when_data_is_missing() {
 
     for (invalid_body, error_message) in test_case {
         let response = client
-            .post(&format!("{}/subscriptions", &app))
+            .post(format!("{}/subscriptions", app))
             .header("Content-Type", "application/x-www-form-urlencoded")
             .body(invalid_body)
             .send()
