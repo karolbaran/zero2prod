@@ -12,6 +12,8 @@ name = "zero2prod"
 
 [dependencies]
 actix-web = "4.10.2"
+chrono = { version = "0.4.40", features = ["clock"] }
+config = "0.15.11"
 serde = { version = "1.0.219", features = ["derive"] }
 sqlx-cli = { version = "0.8.3", features = [
   "native-tls",
@@ -19,6 +21,7 @@ sqlx-cli = { version = "0.8.3", features = [
   "rustls",
 ] }
 tokio = { version = "1.44.2", features = ["macros", "rt-multi-thread"] }
+uuid = { version = "1.16.0", features = ["v4"] }
 
 [dependencies.sqlx]
 version = "0.8.3"
